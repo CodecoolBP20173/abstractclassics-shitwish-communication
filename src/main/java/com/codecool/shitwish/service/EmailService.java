@@ -28,12 +28,8 @@ public class EmailService {
             messageHelper.setSubject("Sample mail subject");
             messageHelper.setText(content, true);
         };
-        try {
-            mailSender.send(messagePreparator);
-        } catch (MailException e) {
-            System.out.println("Something went wrong!");
-            e.printStackTrace();
-        }
+
+        mailSender.send(messagePreparator);
     }
 
     public void sendRegistrationMail(User user) {
