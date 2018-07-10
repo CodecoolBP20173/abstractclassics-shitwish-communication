@@ -1,5 +1,6 @@
 package com.codecool.shitwish.service;
 
+import com.codecool.shitwish.model.Order;
 import com.codecool.shitwish.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,5 +22,12 @@ public class MailContentBuilder {
         Context context = new Context();
         context.setVariable("user", user);
         return templateEngine.process("registrationMail", context);
+    }
+
+    public String buildPurchaseMail(User user, Order order) {
+        Context context = new Context();
+        context.setVariable("user", user);
+        context.setVariable("order", order);
+        return templateEngine.process("purchaseMail", context);
     }
 }
