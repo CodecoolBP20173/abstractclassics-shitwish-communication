@@ -9,7 +9,7 @@ public class Order {
 
     private Integer userId;
 
-    private List<Integer> presentIdList;
+    private List<Present> presentList;
 
     private Date timeStamp;
 
@@ -29,12 +29,12 @@ public class Order {
         this.userId = userId;
     }
 
-    public List<Integer> getPresentIdList() {
-        return presentIdList;
+    public List<Present> getPresentList() {
+        return presentList;
     }
 
-    public void setPresentIdList(List<Integer> presentIdList) {
-        this.presentIdList = presentIdList;
+    public void setPresentList(List<Present> presentList) {
+        this.presentList = presentList;
     }
 
     public Date getTimeStamp() {
