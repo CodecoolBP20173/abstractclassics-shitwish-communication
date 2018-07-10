@@ -21,11 +21,11 @@ public class EmailService {
         this.mailContentBuilder = mailContentBuilder;
     }
 
-    public void prepareAndSend(String recipient, String content) {
+    private void prepareAndSend(String recipient, String subject, String content) {
         MimeMessagePreparator messagePreparator = mimeMessage -> {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
             messageHelper.setTo(recipient);
-            messageHelper.setSubject("Sample mail subject");
+            messageHelper.setSubject(subject);
             messageHelper.setText(content, true);
         };
 
@@ -34,7 +34,8 @@ public class EmailService {
 
     public void sendRegistrationMail(User user) {
         String recipient = user.getEmail();
+        String subject = "Welcome to Shitwish.com";
         String content = mailContentBuilder.buildRegistrationMail(user);
-        prepareAndSend(recipient, content);
+        prepareAndSend(recipient, subject, content);
     }
 }
