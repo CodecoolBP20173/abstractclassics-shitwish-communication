@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+<body>
+    <h1>Successful Purchase</h1>
+
+    <p th:text="'Dear ' + ${user.getFirstName()} + ','"></p>
+
+    <p>You have successfully purchased the following presents:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="present: ${order.getPresentList()}">
+                <td th:text="${present.getName()}"></td>
+                <td th:text="${present.getDescription()}"></td>
+                <td th:text="${present.getPrice()}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>The seller(s) will soon post them to your address.</p>
+
+    <p>Cheerfully yours,<br></br>The Shitwish Team</p>
+</body>
+</html>
