@@ -1,6 +1,7 @@
 package com.codecool.shitwish.service;
 
 import com.codecool.shitwish.model.Order;
+import com.codecool.shitwish.model.Present;
 import com.codecool.shitwish.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
+
+import java.util.List;
 @Service
 public class MailContentBuilder {
 
@@ -29,5 +32,13 @@ public class MailContentBuilder {
         context.setVariable("user", user);
         context.setVariable("order", order);
         return templateEngine.process("purchaseMail", context);
+    }
+
+    public String buildSoldMail(User buyer, User seller, List<Present> presents) {
+        Context context = new Context();
+        context.setVariable("buyer", buyer);
+        context.setVariable("seller", seller);
+        context.setVariable("presents", presents);
+        return templateEngine.process("soldMail", context);
     }
 }
