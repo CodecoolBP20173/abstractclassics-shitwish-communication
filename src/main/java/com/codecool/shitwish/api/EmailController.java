@@ -1,13 +1,11 @@
 package com.codecool.shitwish.api;
 
 import com.codecool.shitwish.model.Order;
-import com.codecool.shitwish.model.Present;
 import com.codecool.shitwish.model.User;
 import com.codecool.shitwish.service.EmailService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.mail.MailException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,7 +29,7 @@ public class EmailController {
         try {
             emailService.sendRegistrationMail(user);
             return HttpStatus.OK;
-        } catch(Exception e)  {
+        } catch (Exception e) {
             e.printStackTrace();
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }

@@ -5,7 +5,6 @@ import com.codecool.shitwish.model.Present;
 import com.codecool.shitwish.model.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
@@ -55,7 +54,7 @@ public class EmailService {
     public void sendSoldMail(User buyer, List sellersUncasted, List presentsUncasted) {
         List<User> sellers = castListElementsToUserObject(sellersUncasted);
         List<Present> presents = castListElementsToPresentObject(presentsUncasted);
-        for (User seller: sellers) {
+        for (User seller : sellers) {
             List<Present> presentsSoldBySeller = getPresentsSoldBySeller(seller, presents);
             sendMailToSeller(buyer, seller, presentsSoldBySeller);
         }
@@ -64,7 +63,7 @@ public class EmailService {
     private List<User> castListElementsToUserObject(List elements) {
         List<User> users = new ArrayList<>();
         ObjectMapper objectMapper = new ObjectMapper();
-        for (Object element: elements) {
+        for (Object element : elements) {
             User user = objectMapper.convertValue(element, User.class);
             users.add(user);
         }
@@ -75,7 +74,7 @@ public class EmailService {
     private List<Present> castListElementsToPresentObject(List elements) {
         List<Present> presents = new ArrayList<>();
         ObjectMapper objectMapper = new ObjectMapper();
-        for (Object element: elements) {
+        for (Object element : elements) {
             Present present = objectMapper.convertValue(element, Present.class);
             presents.add(present);
         }
@@ -93,15 +92,15 @@ public class EmailService {
 
     private String getPresentIdsAsString(List<Present> presents) {
         List<String> presentIds = new ArrayList<>();
-        for (Present present: presents) {
+        for (Present present : presents) {
             presentIds.add(present.getId().toString());
         }
         return String.join(", ", presentIds);
     }
 
     private List<Present> getPresentsSoldBySeller(User seller, List<Present> presents) {
-        List<Present> presentsSoldBySeller= new ArrayList<>();
-        for (Present present: presents) {
+        List<Present> presentsSoldBySeller = new ArrayList<>();
+        for (Present present : presents) {
             if (present.getUserId().equals(seller.getId())) {
                 presentsSoldBySeller.add(present);
             }
