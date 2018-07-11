@@ -31,9 +31,9 @@ public class EmailController {
         try {
             emailService.sendRegistrationMail(user);
             return HttpStatus.OK;
-        } catch (MailException e) {
+        } catch(Exception e)  {
             e.printStackTrace();
-            return HttpStatus.I_AM_A_TEAPOT;
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
     }
 
@@ -45,9 +45,9 @@ public class EmailController {
             Order order = objectMapper.convertValue(objectMap.get("order"), Order.class);
             emailService.sendPurchaseEmail(user, order);
             return HttpStatus.OK;
-        } catch (MailException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            return HttpStatus.I_AM_A_TEAPOT;
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
     }
 
@@ -60,9 +60,9 @@ public class EmailController {
             List presents = objectMapper.convertValue(objectMap.get("presents"), List.class);
             emailService.sendSoldMail(buyer, sellers, presents);
             return HttpStatus.OK;
-        } catch (MailException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            return HttpStatus.I_AM_A_TEAPOT;
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
     }
 
