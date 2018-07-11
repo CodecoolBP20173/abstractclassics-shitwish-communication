@@ -14,7 +14,7 @@ public class Present {
 
     private String imageUrl;
 
-    private String categpry;
+    private String category;
 
     private Boolean available;
 
@@ -64,12 +64,12 @@ public class Present {
         this.imageUrl = imageUrl;
     }
 
-    public String getCategpry() {
-        return categpry;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCategpry(String categpry) {
-        this.categpry = categpry;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public Boolean getAvailable() {

@@ -5,12 +5,12 @@ import com.codecool.shitwish.model.Present;
 import com.codecool.shitwish.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
 import java.util.List;
+
 @Service
 public class MailContentBuilder {
 
