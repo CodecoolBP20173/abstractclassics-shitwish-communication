@@ -1,5 +1,6 @@
 package com.codecool.shitwish.service;
 
+import com.codecool.shitwish.model.Order;
 import com.codecool.shitwish.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
@@ -21,24 +22,28 @@ public class EmailService {
         this.mailContentBuilder = mailContentBuilder;
     }
 
-    public void prepareAndSend(String recipient, String content) {
+    private void prepareAndSend(String recipient, String subject, String content) {
         MimeMessagePreparator messagePreparator = mimeMessage -> {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
             messageHelper.setTo(recipient);
-            messageHelper.setSubject("Sample mail subject");
+            messageHelper.setSubject(subject);
             messageHelper.setText(content, true);
         };
-        try {
-            mailSender.send(messagePreparator);
-        } catch (MailException e) {
-            System.out.println("Something went wrong!");
-            e.printStackTrace();
-        }
+
+        mailSender.send(messagePreparator);
     }
 
     public void sendRegistrationMail(User user) {
         String recipient = user.getEmail();
+        String subject = "Welcome to Shitwish.com";
         String content = mailContentBuilder.buildRegistrationMail(user);
-        prepareAndSend(recipient, content);
+        prepareAndSend(recipient, subject, content);
+    }
+
+    public void sendPurchaseEmail(User user, Order order) {
+        String recipient = user.getEmail();
+        String subject = "Successful purchase, Order Id: " + order.getId();
+        String content = mailContentBuilder.buildPurchaseMail(user, order);
+        prepareAndSend(recipient, subject, content);
     }
 }
