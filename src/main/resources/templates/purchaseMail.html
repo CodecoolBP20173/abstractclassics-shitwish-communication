@@ -1,34 +1,55 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="/css/purchasMail.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Successful Purchase</h1>
-
-    <p th:text="'Dear ' + ${user.getFirstName()} + ','"></p>
-
-    <p>You have successfully purchased the following presents:</p>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="present: ${order.getPresentList()}">
-                <td th:text="${present.getName()}"></td>
-                <td th:text="${present.getDescription()}"></td>
-                <td th:text="${present.getPrice()}"></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <p>The seller(s) will soon post them to your address.</p>
-
-    <p>Cheerfully yours,<br></br>The Shitwish Team</p>
+    <div class="container" >
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="tm-tag-line">
+                    <h2 class="tm-tag-line-title">Successful Purchase</h2>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="messageWrapper">
+            <h3 th:text="'Dear ' + ${user.getFirstName()} + ','">
+                Dear UserFirsname,
+            </h3>
+            <br>
+            <br>
+            <h3>You have successfully purchased the following presents:</h3>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="present: ${order.getPresentList()}">
+                        <td th:text="${present.getName()}">
+                            name
+                        </td>
+                        <td th:text="${present.getDescription()}">
+                            desc
+                        </td>
+                        <td th:text="${present.getPrice()}">
+                            price
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>The seller(s) will soon post them to your address.</p>
+            <br>
+            <p>Cheerfully yours,<br></br>The Shitwish Team</p>
+            <i class="fas tm-fa-big fa-gift tm-fa-mb-big"></i>
+        </div>
+    </div>
 </body>
 </html>

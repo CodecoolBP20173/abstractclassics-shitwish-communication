@@ -1,25 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" type="text/css" href="/css/registration.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
+    <meta charset="UTF-8"/>
 </head>
 <body>
-<span>
-        <h1>Welcome to Shitwish.com</h1>
-
-        <p th:text="'Hi ' + ${user.getFirstName()} + ', thanks for joining us.'"></p>
-
+<div class="container" >
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="tm-tag-line">
+                <h2 class="tm-tag-line-title">Successful Registration</h2>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="messageWrapper">
+        <h3 th:text="'Hi ' + ${user.getFirstName()} + ', thanks for joining us.'">
+            Hi, firstname, thanks for joining us.
+        </h3>
+        <br>
         <p>Have you ever got a shitty present that you didn't like? This site is for you! You can upload the present and
             others will buy it. And you can buy other's stuff as well. It's perfect since it not only redistributes
             things and gadgets well (and so being environmentally friendly) but it redistributes happiness as well!</p>
 
-        <p>Have any questions? Just shoot us an email! We’re always here to help.</p>
+        <br>
+        <p>Have any questions? Just shoot us an email! We' re always here to help.</p>
+        <br>
 
         <p>Log in to our site and start selling you're shitty presents today:</p>
 
         <a href="">Shitwish login</a>
-
-    <p>Cheerfully yours,<br></br>The Shitwish Team</p>
-    </span>
+        <br>
+        <br>
+        <p class="bottomP">Cheerfully yours,<br></br>The Shitwish Team</p>
+        <i class="fas tm-fa-big fa-gift tm-fa-mb-big"></i>
+    </div>
+</div>
 </body>
 </html>

@@ -1,12 +1,62 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/soldMail.css"/>
+    <meta charset="UTF-8"/>
 </head>
 <body>
+<div class="container" >
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="tm-tag-line">
+                <h2 class="tm-tag-line-title">Successful Sale</h2>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="messageWrapper">
+        <h3 th:text="'Dear ' + ${seller.getFirstName()} + ','">
+            Dear UserFirsname,
+        </h3>
+        <br>
+        <br>
+        <h3>Congrats, You've just successfully sold the following present(s):</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="present: ${presents}">
+                    <td th:text="${present.getName()}">name</td>
+                    <td th:text="${present.getDescription()}">present</td>
+                    <td th:text="${present.getPrice()}">price</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <p>Please send the sold item(s) to the buyer as soon as possible:</p>
+        <p th:text="'Name: ' + ${buyer.getFirstName() + ' ' + buyer.getLastName()}">Name: buyername</p>
+        <p th:text="'Address: ' + ${buyer.getAddress()}">Address: buyeraddress</p>
+        <p th:text="'Phone number: ' + ${buyer.getPhoneNum()}">Phone number: buyerphonenumber</p>
+        <br>
+        <br>
+        <p>Cheerfully yours,<br></br>The Shitwish Team</p>
+        <i class="fas tm-fa-big fa-gift tm-fa-mb-big"></i>
+    </div>
+</div>
+</body>
+<!--<body>
     <h1>Successful Sale</h1>
 
-    <p th:text="'Dear ' + ${seller.getFirstName()} + ','"></p>
+    <p th:text="'Dear ' + ${seller.getFirstName()} + ','">
+        Dear firstName,
+    </p>
 
     <p>Congrats, You've just successfully sold the following present(s):</p>
 
@@ -20,19 +70,19 @@
         </thead>
         <tbody>
             <tr th:each="present: ${presents}">
-                <td th:text="${present.getName()}"></td>
-                <td th:text="${present.getDescription()}"></td>
-                <td th:text="${present.getPrice()}"></td>
+                <td th:text="${present.getName()}">name</td>
+                <td th:text="${present.getDescription()}">present</td>
+                <td th:text="${present.getPrice()}">price</td>
             </tr>
         </tbody>
     </table>
 
     <p>Please send the sold item(s) to the buyer as soon as possible:</p>
 
-    <p th:text="'Name: ' + ${buyer.getFirstName() + ' ' + buyer.getLastName()}"></p>
-    <p th:text="'Address: ' + ${buyer.getAddress()}"></p>
-    <p th:text="'Phone number: ' + ${buyer.getPhoneNum()}"></p>
+    <p th:text="'Name: ' + ${buyer.getFirstName() + ' ' + buyer.getLastName()}">Name: buyername</p>
+    <p th:text="'Address: ' + ${buyer.getAddress()}">Address: buyeraddress</p>
+    <p th:text="'Phone number: ' + ${buyer.getPhoneNum()}">Phone number: buyerphonenumber</p>
 
     <p>Cheerfully yours,<br></br>The Shitwish Team</p>
-</body>
+</body>-->
 </html>
