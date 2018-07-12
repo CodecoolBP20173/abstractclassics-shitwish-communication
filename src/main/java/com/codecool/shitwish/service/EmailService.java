@@ -101,7 +101,7 @@ public class EmailService {
     private List<Present> getPresentsSoldBySeller(User seller, List<Present> presents) {
         List<Present> presentsSoldBySeller = new ArrayList<>();
         for (Present present : presents) {
-            if (present.getUserId().equals(seller.getId())) {
+            if (present.getOwnerId().equals(seller.getId())) {
                 presentsSoldBySeller.add(present);
             }
         }

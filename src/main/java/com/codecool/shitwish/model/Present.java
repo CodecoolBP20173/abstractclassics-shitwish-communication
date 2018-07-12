@@ -18,8 +18,7 @@ public class Present {
 
     private Boolean available;
 
-    //ownerId
-    private Integer userId;
+    private Integer ownerId;
 
     //creationTime
     private Date timeStamp;
@@ -80,12 +79,12 @@ public class Present {
         this.available = available;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getOwnerId() {
+        return ownerId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
     }
 
     public Date getTimeStamp() {
